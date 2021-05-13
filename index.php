@@ -49,13 +49,17 @@ stanza -->
             if ($result && $result->num_rows > 0) {
                 // output data of each row
                 while($singoloRisultato = $result->fetch_assoc()) {
-                echo '<a href="/prenotazione.php?id='. $singoloRisultato['id'] .'">'."Stanza N. ". $singoloRisultato['room_number']. " piano: ".$singoloRisultato['floor']. ' con n° '.$singoloRisultato['beds'].'</a>' ;
+                echo '<a href="/configurazioni_controller.php?id='. $singoloRisultato['id'] .'">'."Stanza N. ". $singoloRisultato['room_number']. " piano: ".$singoloRisultato['floor']. ' con n° '.$singoloRisultato['beds'].'</a>' ;
                 }
             } elseif ($result) {
                     echo "0 results";
             } else {
                 echo "query error";
             }
+
+
+
+
                 $conn->close();
 
             
