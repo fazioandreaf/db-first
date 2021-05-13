@@ -43,23 +43,24 @@
 un click porta al dettaglio della
 stanza -->
         <div class="container"><h1>Lista delle stanze</h1>
-        <div>
         <?php
-        $server ='localhost';
-        $user = 'root';
-        $password = 'root';
-        $db = 'dbhotel';
-        $host = 'localhost';
-        $port = 3306;
-        
-        $conn = new mysqli($server,$user,$password,$db);
-        if($conn && $conn -> connect_error){
-            echo "connection failerd" . $conn -> connect_error;
-        } else echo 'Connection allow'
-        
+            require_once "room_controller.php";
+            $result=get_rooms();
+            if ($result && $result->num_rows > 0) {
+                // output data of each row
+                while($singoloRisultato = $result->fetch_assoc()) {
+                echo '<a href="/prenotazione.php?id='. $singoloRisultato['id'] .'">'."Stanza N. ". $singoloRisultato['room_number']. " piano: ".$singoloRisultato['floor']. ' con n° '.$singoloRisultato['beds'].'</a>' ;
+                }
+            } elseif ($result) {
+                    echo "0 results";
+            } else {
+                echo "query error";
+            }
+                $conn->close();
+
+            
         ?>
         </div>
-        </div>
-
+        <a href="./add-room.php">Add room</a>
 </body>
 </html>
