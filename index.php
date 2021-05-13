@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awesame -->
+    <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,6 +27,12 @@
             background-color:green;
             text-align:center;
         }
+        .container{
+            width:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
     </style>
     <script>
     </script>
@@ -37,13 +43,22 @@
 un click porta al dettaglio della
 stanza -->
         <div class="container"><h1>Lista delle stanze</h1>
-        
+        <div>
         <?php
-        $hello='hello';
-        echo $hello.' mondo';
+        $server ='localhost';
+        $user = 'root';
+        $password = 'root';
+        $db = 'dbhotel';
+        $host = 'localhost';
+        $port = 3306;
         
+        $conn = new mysqli($server,$user,$password,$db);
+        if($conn && $conn -> connect_error){
+            echo "connection failerd" . $conn -> connect_error;
+        } else echo 'Connection allow'
         
         ?>
+        </div>
         </div>
 
 </body>
